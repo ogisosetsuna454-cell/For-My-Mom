@@ -27,9 +27,13 @@
 
         /* 数学心形背景 */
         .heart-svg {
-            width: 500px;
-            filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.3));
+           width: 120px; /* 核心：缩小尺寸 */
+            margin-top: 20px; /* 和文字拉开一点距离 */
+            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.3));
             animation: pulse 2s infinite ease-in-out;
+            display: block; /* 确保居中 */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @keyframes pulse {
@@ -39,17 +43,19 @@
 
         /* 金色艺术字 */
         .art-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
+           width: 100%;
             pointer-events: none;
+            display: flex; /* 变成弹性盒模型 */
+            flex-direction: column; /* 内容纵向排列：文字在上，心在下 */
+            align-items: center; /* 水平居中 */
+            justify-content: center; /* 垂直居中 */
+            height: auto; /* 高度自动 */
         }
 
         h1 {
-            font-size: 64px;
-            margin: 0;
+            font-size: 48px; /* 字体稍微改小一点，更精致 */
+            margin: 0 0 15px 0; /* 下方留点空隙给心形 */
+            /* 以下保留原有的金色渐变效果 */
             background: linear-gradient(to bottom, #ffe08a 0%, #d4af37 50%, #8b6d10 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
