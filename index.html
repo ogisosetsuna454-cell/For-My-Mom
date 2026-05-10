@@ -69,7 +69,7 @@
             position: fixed;
             right: 50px;
             bottom: 50px;
-            font-size: 20px;
+            font-size: 24px;
             color: #888;
             font-style: italic;
         }
@@ -93,9 +93,9 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.6);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.8);
             border: 2px solid rgba(212, 175, 55, 0.5); /* 加个淡金色边框 */
             border-radius: 50%;
             display: flex;
@@ -116,6 +116,33 @@
         @keyframes rotateIcon {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+        
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 40px; /* 标题在手机上不要太宽，防止换行 */
+            }
+
+            .heart-svg {
+                width: 100px; /* 心形稍微缩小一点点，给文字留空间 */
+            }
+
+            #music-control {
+                width: 80px;  /* 手机端按钮做得非常大，方便手指点击 */
+                height: 80px;
+                top: 30px;
+                right: 30px;
+                font-size: 40px;
+            }
+
+            .signature {
+                right: 20px;
+                bottom: 30px;
+                font-size: 28px; /* 署名在手机上显著加大 */
+                background: rgba(255, 255, 255, 0.5); /* 给署名加个半透明底色，防止背景干扰 */
+                padding: 5px 10px;
+                border-radius: 10px;
+            }
         }
     </style>
 </head>
