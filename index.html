@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>母亲节快乐 - 给老妈的硬核礼物</title>
+    <title>给老妈的母亲节惊喜</title>
     <style>
         body {
             margin: 0;
@@ -10,7 +10,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #fff5f5; /* 浅粉色背景 */
+            /* 1. 设置背景图 */
+            background-image: linear-gradient(rgba(255, 245, 245, 0.7), rgba(255, 245, 245, 0.7)), url('mom.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            
             font-family: "Microsoft YaHei", "SimHei", sans-serif;
             overflow: hidden;
         }
@@ -20,7 +25,7 @@
             text-align: center;
         }
 
-        /* 1. 数学心形背景 */
+        /* 数学心形背景 */
         .heart-svg {
             width: 500px;
             filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.3));
@@ -32,7 +37,7 @@
             50% { transform: scale(1.05); filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.5)); }
         }
 
-        /* 2. 金色艺术字 */
+        /* 金色艺术字 */
         .art-text {
             position: absolute;
             top: 50%;
@@ -45,17 +50,15 @@
         h1 {
             font-size: 64px;
             margin: 0;
-            /* 金色渐变 */
             background: linear-gradient(to bottom, #ffe08a 0%, #d4af37 50%, #8b6d10 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            /* 发光描边效果 */
             filter: drop-shadow(0 0 8px rgba(255, 223, 0, 0.6));
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
             letter-spacing: 5px;
         }
 
-        /* 3. 署名 */
+        /* 署名 */
         .signature {
             position: fixed;
             right: 50px;
@@ -78,9 +81,47 @@
             from { transform: translateY(-100vh) rotate(0deg); }
             to { transform: translateY(100vh) rotate(360deg); }
         }
+
+        /* --- 音乐控制按钮样式 --- */
+        #music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 2px solid rgba(212, 175, 55, 0.5); /* 加个淡金色边框 */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 1000;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* 播放时图标旋转 */
+        .rotating {
+            animation: rotateIcon 4s linear infinite;
+        }
+
+        @keyframes rotateIcon {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
+
+    <div id="music-control" onclick="toggleMusic()">
+        <span id="music-icon">🎵</span>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="container">
         <svg class="heart-svg" viewBox="0 0 32 29.6">
@@ -93,10 +134,24 @@
         </div>
     </div>
 
-    <div class="signature">- 你的儿子 xxx</div>
+    <div class="signature">- 你的儿子 李格羽</div>
 
     <script>
-        // 动态生成一些飘落的花瓣
+        // --- 音乐播放控制逻辑 ---
+        const music = document.getElementById('bg-music');
+        const musicControl = document.getElementById('music-control');
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                musicControl.classList.add('rotating');
+            } else {
+                music.pause();
+                musicControl.classList.remove('rotating');
+            }
+        }
+
+        // --- 飘落花瓣逻辑 ---
         function createPetal() {
             const petal = document.createElement('div');
             petal.className = 'petal';
