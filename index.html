@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>母亲节快乐 - 给老妈的硬核礼物</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff5f5; /* 浅粉色背景 */
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+        }
+
+        /* 1. 数学心形背景 */
+        .heart-svg {
+            width: 500px;
+            filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.3));
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.3)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.5)); }
+        }
+
+        /* 2. 金色艺术字 */
+        .art-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            pointer-events: none;
+        }
+
+        h1 {
+            font-size: 64px;
+            margin: 0;
+            /* 金色渐变 */
+            background: linear-gradient(to bottom, #ffe08a 0%, #d4af37 50%, #8b6d10 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* 发光描边效果 */
+            filter: drop-shadow(0 0 8px rgba(255, 223, 0, 0.6));
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            letter-spacing: 5px;
+        }
+
+        /* 3. 署名 */
+        .signature {
+            position: fixed;
+            right: 50px;
+            bottom: 50px;
+            font-size: 20px;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* 装饰用的小花瓣 */
+        .petal {
+            position: absolute;
+            background: #ffc0cb;
+            border-radius: 150% 0 150% 0;
+            animation: drift 5s infinite linear;
+            opacity: 0.6;
+        }
+
+        @keyframes drift {
+            from { transform: translateY(-100vh) rotate(0deg); }
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <svg class="heart-svg" viewBox="0 0 32 29.6">
+            <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+            c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z" fill="#ff4d4d"/>
+        </svg>
+
+        <div class="art-text">
+            <h1>母亲节快乐</h1>
+        </div>
+    </div>
+
+    <div class="signature">- 你的儿子 xxx</div>
+
+    <script>
+        // 动态生成一些飘落的花瓣
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.width = Math.random() * 15 + 5 + 'px';
+            petal.style.height = petal.style.width;
+            petal.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(petal);
+            setTimeout(() => petal.remove(), 5000);
+        }
+        setInterval(createPetal, 300);
+    </script>
+</body>
+</html>
